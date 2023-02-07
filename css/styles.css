@@ -1,10 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  display: inline-block;
 }
 
 body {
+  background: azure;
   display: flex;
   flex-direction: column;
 }
@@ -15,14 +15,63 @@ header {
   justify-content: space-between;
   align-items: center;
   justify-items: center;
-  margin: 0 15px;
+  background: beige;
 }
 
 .brand-section {
-  padding: 25px;
+  padding: 1.75rem;
   font-size: 2.5rem;
 }
 
+.menu-section ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.menu-section ul li {
+  padding: 1rem;
+}
+
+.menu-section ul li a {
+  text-decoration: none;
+}
+
 .mainpage-hero {
-  background-image: url("../img/hero_background.png");
+  height: 50vh;
+  width: 100vw;
+  color: aliceblue;
+  background: url("../img/hero_background.jpg") no-repeat;
+  background-size: 100% auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mainpage-hero h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  padding: 3rem;
+}
+
+
+@media only screen and (max-width: 700px) {
+  .mainpage-hero {
+
+  }
+  .mainpage-hero h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mainpage-hero {
+
+  }
+  .mainpage-hero h1 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    padding: 1rem;
+  }
 }
