@@ -18,7 +18,7 @@
     <div class="menu" id="menu">
       <ul class="list">
         <li class="list-item">
-          <a href="./index.html" class="list-link current">Home</a>
+          <a href="./index.html" class="list-link">Home</a>
         </li>
         <li class="list-item">
           <a href="./blog.html" class="list-link">Blog</a>
@@ -27,7 +27,7 @@
           <a href="./about.html" class="list-link">About</a>
         </li>
         <li class="list-item">
-          <a href="./contact.html" class="list-link">Contact</a>
+          <a href="./contact.html" class="list-link current">Contact</a>
         </li>
       </ul>
     </div>
@@ -47,68 +47,38 @@
   </nav>
 </header>
 <main>
-  <section class="featured-posts section-header-offset">
-    <div class="featured-posts-container container d-grid">
-      <div class="featured-content d-grid">
-        <div class="page-headline">
-          <h1 class="headline fancy-border">
-            <span class="place-items-center">Latest Posts</span>
-          </h1>
-        </div>
-        <!-- Post Card Start -->
-        <a href="#" class="post featured-post">
-          <img src="./img/dad_image_1.jpeg" alt="Post featured image" class="post-image">
-          <div class="post-data-container">
-            <div class="post-data">
-              <span>Post date</span>
-              <span class="post-data-spacer"></span>
-              <span>8 min read</span>
-            </div>
-            <h3 class="title post-title">Post 1</h3>
-          </div>
-        </a>
-        <!-- Post Card End -->
-        <!-- Post Card Start -->
-        <a href="#" class="post featured-post">
-          <img src="./img/dad_image_1.jpeg" alt="Post featured image" class="post-image">
-          <div class="post-data-container">
-            <div class="post-data">
-              <span>Post date</span>
-              <span class="post-data-spacer"></span>
-              <span>8 min read</span>
-            </div>
-            <h3 class="title post-title">Post 1</h3>
-          </div>
-        </a>
-        <!-- Post Card End -->
-        <!-- Post Card Start -->
-        <a href="#" class="post featured-post">
-          <img src="./img/dad_image_1.jpeg" alt="Post featured image" class="post-image">
-          <div class="post-data-container">
-            <div class="post-data">
-              <span>Post date</span>
-              <span class="post-data-spacer"></span>
-              <span>8 min read</span>
-            </div>
-            <h3 class="title post-title">Post 1</h3>
-          </div>
-        </a>
-        <!-- Post Card End -->
-        <!-- Post Card Start -->
-        <a href="#" class="post featured-post">
-          <img src="./img/dad_image_1.jpeg" alt="Post featured image" class="post-image">
-          <div class="post-data-container">
-            <div class="post-data">
-              <span>Post date</span>
-              <span class="post-data-spacer"></span>
-              <span>8 min read</span>
-            </div>
-            <h3 class="title post-title">Post 1</h3>
-          </div>
-        </a>
-        <!-- Post Card End -->
+  <section class="contact-page section-header-offset">
+    <div class="contact-page-container container">
+      <div class="blog-post-data">
+        <h1 class="title blog-post-title">
+          Contact Me
+        </h1>
       </div>
-    </div>
+      <div class="contact-form-container container" id="contact-form-container">
+        <div class="contact-form-container-inner">
+          <form action="" class="contact-form" id="contact-form">
+            <div class="form-control">
+              <label for="contact-name">Your Name: </label>
+              <input type="text" class="contact-form-input" id="contact-name" placeholder="Your name"/>
+            </div>
+            <div class="form-control">
+              <label for="contact-mail">Your Email: </label>
+              <input type="text" class="contact-form-input" id="contact-mail" placeholder="Your email"/>
+            </div>
+            <div class="form-control">
+              <label for="contact-subject">Subject</label>
+              <input type="text" class="contact-form-input" id="contact-subject" placeholder="Subject"/>
+            </div>
+            <div class="form-control">
+              <label for="contact-message">Message</label>
+              <textarea type="text" class="contact-form-input" id="contact-message"
+                        placeholder="Your message"></textarea>
+            </div>
+            <input class="form-btn" type="submit" value="submit"/>
+          </form>
+        </div>
+        <span class="errorSection"></span>
+      </div>
   </section>
 </main>
 <footer class="footer section">
@@ -140,10 +110,10 @@
       <h6 class="title footer-title">Usefull Links</h6>
       <ul class="list footer-list">
         <li class="list-item">
-          <a href="#" class="list-link">Home</a>
+          <a href="./index.html" class="list-link">Home</a>
         </li>
         <li class="list-item">
-          <a href="#" class="list-link">Blog</a>
+          <a href="./blog.html" class="list-link">Blog</a>
         </li>
         <li class="list-item">
           <a href="./about.html" class="list-link">About</a>
@@ -169,9 +139,7 @@
     <i class="ri-close-line"></i>
   </button>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js"
-        integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="js/scripts.js"></script>
 </body>
 </html>
