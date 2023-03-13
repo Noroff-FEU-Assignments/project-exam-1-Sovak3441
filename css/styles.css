@@ -509,7 +509,7 @@ i {
 
 .author {
   margin-top: 5rem;
-  gap. var(--gap);
+  gap: var(--gap);
   background-color: var(--secondary-background-color);
 }
 

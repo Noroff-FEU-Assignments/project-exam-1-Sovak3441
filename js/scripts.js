@@ -67,35 +67,106 @@ const emailInput = document.getElementById("contact-mail");
 const subjectInput = document.getElementById("contact-subject");
 const messageInput = document.getElementById("contact-message");
 const errorSections = document.querySelector(".errorSection");
-contactForm.addEventListener("submit", (e) => {
-  let error = [];
-  e.preventDefault();
-  if (nameInput.value.length <= 5) {
-    error.push("Please provide a Name of 5 characters or more");
-  }
-  if (!validMail(emailInput.value)) {
-    error.push("Please provide an valid e-mail address");
-  }
-  if (subjectInput.value.length <= 5) {
-    error.push("Please provide an Subject of 15 characters or more");
-  }
-  if (messageInput.value.length <= 24) {
-    error.push("Your message must be more then 20 characters, and less then 100 characters");
-  }
+if(contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    let error = [];
+    e.preventDefault();
+    if (nameInput.value.length <= 5) {
+      error.push("Please provide a Name of 5 characters or more");
+    }
+    if (!validMail(emailInput.value)) {
+      error.push("Please provide an valid e-mail address");
+    }
+    if (subjectInput.value.length <= 5) {
+      error.push("Please provide an Subject of 15 characters or more");
+    }
+    if (messageInput.value.length <= 24) {
+      error.push("Your message must be more then 25 characters");
+    }
 
-  if (error.length < 1) {
-    window.location.href = "index.html";
-  } else {
-    let infoElem = "";
-    error.forEach(err => {
-      infoElem += `<p class="error">${err}</p>`;
-    });
-    errorSections.innerHTML = infoElem;
-  }
-});
+    if (error.length < 1) {
+      window.location.href = "index.html";
+    } else {
+      let infoElem = "";
+      error.forEach(err => {
+        infoElem += `<p class="error">${err}</p>`;
+      });
+      errorSections.innerHTML = infoElem;
+    }
+  });
+}
+
+const addDataToIndex = (result) => {
+  console.log(result);
+  const mainContainer = document.querySelector("#featured-content");
+
+  let pageElement = "";
+  let pageSection;
+  for(let i = 0; i <= 3; i++) {
+    let currEl = result[i];
+    pageElement += `
+   <a href="./blog-post.html?pid=${currEl.id}" class="post featured-post">
+          <img src="${currEl._links["wp:featuredmedia"][0].href}" alt="Post featured image" class="post-image">
+          <div class="post-data-container">
+            <div class="post-data">
+              <span>${currEl.date}</span>
+              <span class="post-data-spacer"></span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="title post-title">${currEl.title.rendered}</h3>
+          </div>
+        </a>
+    `;
+    pageSection = `
+    <div class="page-headline">
+          <h1 class="headline fancy-border">
+            <span class="place-items-center">Latest Posts</span>
+          </h1>
+        </div>
+        ${pageElement}
+    `;
+  };
+
+  mainContainer.innerHTML = pageSection;
+}
+
+const addDataToBlog = (result) => {
+  console.log(result);
+  const mainContainer = document.querySelector("#all-content");
+
+  let pageElement = "";
+  let pageSection;
+  for(let i = 0; i < result.length; i++) {
+    let currEl = result[i];
+    pageElement += `
+   <a href="./blog-post.html?pid=${currEl.id}" class="post featured-post">
+          <img src="${currEl._links["wp:featuredmedia"][0].href}" alt="Post featured image" class="post-image">
+          <div class="post-data-container">
+            <div class="post-data">
+              <span>${currEl.date}</span>
+              <span class="post-data-spacer"></span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="title post-title">${currEl.title.rendered}</h3>
+          </div>
+        </a>
+    `;
+    pageSection = `
+    <div class="page-headline">
+          <h1 class="headline fancy-border">
+            <span class="place-items-center">Blog</span>
+          </h1>
+        </div>
+        ${pageElement}
+    `;
+  };
+
+  mainContainer.innerHTML = pageSection;
+}
 
 const addDetailsToPage = (result) => {
   const detailElement = document.querySelector("#blog-post-container");
+  document.title = `Education Blog | ${result.title.rendered}`;
 
   let detailsObj = `
   <div class="blog-post-data">
@@ -141,11 +212,27 @@ const fetchAll = () => {
       res.forEach((row) => {
         results.push(row);
       });
-      addAllDataToPage(results);
+      addDataToIndex(results);
     })
     .catch(err => {
       console.warn(err);
-      document.querySelector("#blog-post-container").innerHTML = err;
+      document.querySelector("#featured-content").innerHTML = err;
+    });
+}
+
+const fetchAllBlogPage = () => {
+  const results = [];
+  fetch("https://cms.neshagen.no/wp-json/wp/v2/posts")
+    .then(data => data.json())
+    .then(res => {
+      res.forEach((row) => {
+        results.push(row);
+      });
+      addDataToBlog(results);
+    })
+    .catch(err => {
+      console.warn(err);
+      document.querySelector("#featured-content").innerHTML = err;
     });
 }
 
