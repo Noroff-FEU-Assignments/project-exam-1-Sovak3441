@@ -51,7 +51,7 @@ To get in contact with me regarding this project, please use one of the below op
 
 ## Acknowledgments
 
-[Noroff](https://www.noroff.no/en)
-[freecodecamp](https://www.freecodecamp.com)
-[Web Dev Simplified](https://courses.webdevsimplified.com/)
-[Udemy](https://www.udemy.com/)
+- [Noroff](https://www.noroff.no/en)
+- [freecodecamp](https://www.freecodecamp.com)
+- [Web Dev Simplified](https://courses.webdevsimplified.com/)
+- [Udemy](https://www.udemy.com/)
