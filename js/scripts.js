@@ -106,7 +106,7 @@ const addDataToIndex = (result) => {
     let currEl = result[i];
     pageElement += `
    <a href="./blog-post.html?pid=${currEl.id}" class="post featured-post">
-          <img src="${currEl._links["wp:featuredmedia"][0].href}" alt="Post featured image" class="post-image">
+          <img src="${currEl._embedded["wp:featuredmedia"][0]["source_url"]}" alt="Post featured image" class="post-image">
           <div class="post-data-container">
             <div class="post-data">
               <span>${currEl.date}</span>
@@ -140,7 +140,7 @@ const addDataToBlog = (result) => {
     let currEl = result[i];
     pageElement += `
    <a href="./blog-post.html?pid=${currEl.id}" class="post featured-post">
-          <img src="${currEl._links["wp:featuredmedia"][0].href}" alt="Post featured image" class="post-image">
+          <img src="${currEl._embedded['wp:featuredmedia']['0']["source_url"]}" alt="Post featured image" class="post-image">
           <div class="post-data-container">
             <div class="post-data">
               <span>${currEl.date}</span>
@@ -176,7 +176,7 @@ const addDetailsToPage = (result) => {
       <div class="post-data">
         <span>${result.date}</span>
       </div>
-      <img src="${result._links["wp:featuredmedia"][0].href}" alt="" class="">
+      <img src="${result._embedded['wp:featuredmedia']['0']["source_url"]}" alt="" class="">
     </div>
     <div class="container">
       <p>
@@ -206,12 +206,13 @@ const addDetailsToPage = (result) => {
 
 const fetchAll = () => {
   const results = [];
-  fetch("https://cms.neshagen.no/wp-json/wp/v2/posts")
+  fetch("https://cms.neshagen.no/wp-json/wp/v2/posts?_embed")
     .then(data => data.json())
     .then(res => {
       res.forEach((row) => {
         results.push(row);
       });
+      console.log(results);
       addDataToIndex(results);
     })
     .catch(err => {
@@ -222,7 +223,7 @@ const fetchAll = () => {
 
 const fetchAllBlogPage = () => {
   const results = [];
-  fetch("https://cms.neshagen.no/wp-json/wp/v2/posts")
+  fetch("https://cms.neshagen.no/wp-json/wp/v2/posts?_embed")
     .then(data => data.json())
     .then(res => {
       res.forEach((row) => {
@@ -237,7 +238,7 @@ const fetchAllBlogPage = () => {
 }
 
 const fetchDetails = (param) => {
-  fetch(`https://cms.neshagen.no/wp-json/wp/v2/posts/${param}`)
+  fetch(`https://cms.neshagen.no/wp-json/wp/v2/posts/${param}?_embed`)
     .then(data => data.json())
     .then(res => {
       console.log(res);
